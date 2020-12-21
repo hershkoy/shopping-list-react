@@ -11,6 +11,16 @@ var ListItem = React.createClass({
     this.props.removeListItem(listItemId);
   },
 
+  editItem: function (event) {
+    event.preventDefault();
+
+    var listItemId = this.props.item.id;
+
+    this.props.editListItem(listItemId);
+  },
+
+  
+
   render: function () {
     var item = this.props.item;
     return (
@@ -22,8 +32,9 @@ var ListItem = React.createClass({
         {item.description.length > 0 ? <ListItemDescription description={item.description} /> : ''}
 
         <div className="panel-footer">
-          <form className="form-inline" onSubmit={this.handleSubmit}>
-            <button type="submit" className="btn btn-default btn-xs">Remove</button>
+          <form className="form-inline" >
+          <button type="button" onClick={this.handleSubmit} className="btn btn-default btn-xs">Remove</button>
+          <button type="button" onClick={this.editItem} className="btn btn-default btn-xs">Edit</button>
           </form>
         </div>
       </div>
