@@ -16,7 +16,7 @@ var ListItem = React.createClass({
 
     var listItemId = this.props.item.id;
 
-    this.props.editListItem(listItemId);
+    this.props.editListItemStart(listItemId);
   },
 
   

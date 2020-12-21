@@ -10,7 +10,7 @@ var EditListItem = React.createClass({
   handleSubmitEvent: function (event) {
     event.preventDefault();
 
-    //alert (this.props.edit_id);
+    alert (this.props.edit_id);
 
     var item = {
       id: 0,
@@ -30,19 +30,19 @@ var EditListItem = React.createClass({
 
         <div className="form-group">
           <label htmlFor="listItemName">Name <span style={styleRequired}>*</span></label>
-          <input type="text" className="form-control" id="listItemName" placeholder="Enter name" required ref="name" />
+          <input type="text" className="form-control" id="listItemName" placeholder="Enter name" required ref="name" value="111111" />
         </div>
 
         <div className="form-group">
           <label htmlFor="listItemDescription">Description</label>
-          <textarea className="form-control" rows="3" id="listItemDescription" placeholder="Enter description" ref="description"></textarea>
+          <textarea className="form-control" rows="3" id="listItemDescription" placeholder="Enter description" ref="description" value="111111" ></textarea>
         </div>
 
         <div className="form-group">
           <label htmlFor="listItemQuantity">Quantity <span style={styleRequired}>*</span></label>
           <div className="row">
             <div className="col-xs-5 col-sm-6 col-md-4">
-              <input type="number" min="1" max="9999" step="1" defaultValue="1" className="form-control" id="listItemQuantity" required ref="quantity" />
+              <input type="number" min="1" max="9999" step="1" defaultValue="1" className="form-control" id="listItemQuantity" required ref="quantity" value="10"  />
             </div>
           </div>
         </div>

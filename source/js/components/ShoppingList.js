@@ -32,7 +32,15 @@ var ShoppingList = React.createClass({
     list[item.id] = item;
 
     this.updateList(list);
+    this.edit_id = null;
   },
+
+  editListItemStart: function (item_id) {
+    this.setState({
+      edit_id: item_id
+    });
+  },
+
 
   removeListItem: function (itemId) {
     var list = this.state.list;
@@ -48,7 +56,7 @@ var ShoppingList = React.createClass({
 
   render: function () {
     var items = this.state.list;
-    var edit_id = 0; //this.state.edit_id;
+    var edit_id = this.state.edit_id;
 
     return (
       <div className="container">
@@ -58,18 +66,17 @@ var ShoppingList = React.createClass({
             <List 
               items={items}
               removeListItem={this.removeListItem} 
+              editListItemStart={this.editListItemStart} 
               removeAllListItems={this.removeAllListItems} />
               
           </div>
           <div className="col-sm-6">
 
-            { false /* edit_id!=null */  ? (
-              <EditListItem EditListItem={this.EditListItem} />
+            { edit_id!=null ? (
+              <EditListItem EditListItem={this.EditListItem} edit_id={edit_id} />
             ) : (
-              <AddListItem addListItem={this.addListItem} edit_id={edit_id}/>
+              <AddListItem addListItem={this.addListItem} />
             )}
-
-            
           
           </div>
         </div>

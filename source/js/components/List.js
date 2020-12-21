@@ -29,7 +29,10 @@ var List = React.createClass({
       .getListOfItemIds(items)
       .map(function createListItemElement(itemId) {
         item = items[itemId];
-        return (<ListItem item={item} removeListItem={this.props.removeListItem} key={item.id} />);
+        return (<ListItem item={item} 
+            removeListItem={this.props.removeListItem} 
+            editListItemStart={this.props.editListItemStart} 
+            key={item.id} />);
       }.bind(this))
       .reverse()
     );
