@@ -10,18 +10,17 @@ var EditListItem = React.createClass({
   handleSubmitEvent: function (event) {
     event.preventDefault();
 
-    alert (this.props.edit_id);
+    this.props.item.name = this.refs.name.value.trim();
+    this.props.item.description = this.refs.description.value.trim();
+    this.props.item.quantity = this.refs.quantity.value.trim();
 
-    var item = {
-      id: 0,
-      date: new Date(),
-      name: this.refs.name.value.trim(),
-      description: this.refs.description.value.trim(),
-      quantity: this.refs.quantity.value
-    };
-
-    this.props.editListItem(item);
+    this.props.editListItem(this.props.item);
   },
+
+  cancelEdit: function (event) {
+    event.preventDefault();
+    this.props.editListItemStart(null);  //setting to null returns to "add new item"
+  },  
 
   render: function () {
     return (
@@ -30,19 +29,19 @@ var EditListItem = React.createClass({
 
         <div className="form-group">
           <label htmlFor="listItemName">Name <span style={styleRequired}>*</span></label>
-          <input type="text" className="form-control" id="listItemName" placeholder="Enter name" required ref="name" value="111111" />
+          <input type="text" className="form-control" id="listItemName" placeholder="Enter name" required ref="name" defaultValue={this.props.item.name} />
         </div>
 
         <div className="form-group">
           <label htmlFor="listItemDescription">Description</label>
-          <textarea className="form-control" rows="3" id="listItemDescription" placeholder="Enter description" ref="description" value="111111" ></textarea>
+          <textarea className="form-control" rows="3" id="listItemDescription" placeholder="Enter description" ref="description" defaultValue={this.props.item.description} ></textarea>
         </div>
 
         <div className="form-group">
           <label htmlFor="listItemQuantity">Quantity <span style={styleRequired}>*</span></label>
           <div className="row">
             <div className="col-xs-5 col-sm-6 col-md-4">
-              <input type="number" min="1" max="9999" step="1" defaultValue="1" className="form-control" id="listItemQuantity" required ref="quantity" value="10"  />
+              <input type="number" min="1" max="9999" step="1" className="form-control" id="listItemQuantity" required ref="quantity" defaultValue={this.props.item.quantity}  />
             </div>
           </div>
         </div>
@@ -50,7 +49,7 @@ var EditListItem = React.createClass({
         <hr />
 
         <button type="submit" className="btn btn-primary">Submit</button>
-        <button type="reset" className="btn btn-link">Cancel</button>
+        <button type="button" onClick={this.cancelEdit} className="btn btn-link">Cancel</button>
       </form>
     );
   }
