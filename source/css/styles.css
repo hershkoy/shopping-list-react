@@ -1,0 +1,7 @@
+.page-header {
+    margin: 40px 0 20px;
+    border-bottom: 1px solid #eee;
+    background: linear-gradient(100deg, rgba(0,229,145,1) 0%, rgba(47,239,188,1) 100%);
+    padding: 15px;
+    color:white;
+}

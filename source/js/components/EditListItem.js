@@ -1,6 +1,8 @@
 var React = require('react');
 var uuid = require('node-uuid');
 
+require("../../css/styles.css")
+
 var styleRequired = {
   color: "#ffaaaa"
 };
